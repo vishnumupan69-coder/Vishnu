@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@layer base {
+    :root {
+        /* Base Colors - Ocean Blue Tech Theme */
+        --background: 210 40% 98%;
+        --foreground: 220 20% 15%;
+        
+        /* Card & Surface */
+        --card: 0 0% 100%;
+        --card-foreground: 220 20% 15%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 220 20% 15%;
+        
+        /* Primary - Ocean Blue */
+        --primary: 205 85% 48%;
+        --primary-foreground: 0 0% 100%;
+        --primary-light: 205 75% 65%;
+        --primary-dark: 205 85% 35%;
+        
+        /* Secondary - Tech Purple */
+        --secondary: 250 70% 62%;
+        --secondary-foreground: 0 0% 100%;
+        
+        /* Accent - Vibrant Cyan */
+        --accent: 185 80% 52%;
+        --accent-foreground: 220 20% 15%;
+        
+        /* Success - Green */
+        --success: 145 65% 48%;
+        --success-foreground: 0 0% 100%;
+        
+        /* Warning - Amber */
+        --warning: 38 92% 50%;
+        --warning-foreground: 0 0% 100%;
+        
+        /* Muted */
+        --muted: 210 30% 94%;
+        --muted-foreground: 220 15% 45%;
+        
+        /* Destructive */
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 100%;
+        
+        /* Border & Input */
+        --border: 220 15% 88%;
+        --input: 220 15% 88%;
+        --ring: 205 85% 48%;
+        
+        /* Chart Colors */
+        --chart-1: 205 85% 48%;
+        --chart-2: 250 70% 62%;
+        --chart-3: 185 80% 52%;
+        --chart-4: 145 65% 48%;
+        --chart-5: 38 92% 50%;
+        
+        --radius: 0.5rem;
+        
+        /* Custom Gradients */
+        --gradient-primary: linear-gradient(135deg, hsl(205 85% 48%) 0%, hsl(250 70% 62%) 100%);
+        --gradient-accent: linear-gradient(135deg, hsl(185 80% 52%) 0%, hsl(205 85% 48%) 100%);
+        --gradient-subtle: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 35% 96%) 100%);
+        
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        --shadow-primary: 0 8px 16px -4px hsla(205, 85%, 48%, 0.3);
+        --shadow-glow: 0 0 20px hsla(205, 85%, 48%, 0.15);
+        
+        /* Transitions */
+        --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .dark {
+        --background: 220 25% 8%;
+        --foreground: 210 20% 98%;
+        --card: 220 20% 12%;
+        --card-foreground: 210 20% 98%;
+        --popover: 220 20% 12%;
+        --popover-foreground: 210 20% 98%;
+        --primary: 205 85% 55%;
+        --primary-foreground: 220 20% 10%;
+        --secondary: 250 65% 60%;
+        --secondary-foreground: 210 20% 98%;
+        --muted: 220 20% 18%;
+        --muted-foreground: 220 15% 65%;
+        --accent: 185 75% 50%;
+        --accent-foreground: 220 20% 10%;
+        --border: 220 20% 20%;
+        --input: 220 20% 20%;
+        --ring: 205 85% 55%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Custom Utilities */
+@layer utilities {
+    .text-gradient-primary {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .text-gradient-accent {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .shadow-primary {
+        box-shadow: var(--shadow-primary);
+    }
+    
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+    
+    .transition-smooth {
+        transition: var(--transition-smooth);
+    }
+    
+    .transition-bounce {
+        transition: var(--transition-bounce);
+    }
+}
+
+/* Animation Keyframes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.3s ease-out forwards;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
